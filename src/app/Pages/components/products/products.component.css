@@ -1,0 +1,100 @@
+:host {
+  display: black;
+  padding: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.table-wrap {
+  width: 100%;
+  margin: 0 auto;
+  background: #7da0c5;
+  border-radius: 9px;
+  box-shadow: 0 6px 19px rgba(49, 48, 48, 0.07);
+}
+.title {
+  margin: 0 1 0.9rem 0;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.form-product {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.search-button {
+  padding: 6px 12px;
+  background-color: #557dac;
+  /* color: white; */
+  border: none;
+  box-shadow: 0 2px 4px rgba(49, 48, 48, 0.5);
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.search-field {
+  padding: 5px;
+  /* background-color: #557dac; */
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 4px rgba(49, 48, 48, 0.5);
+  /* font-weight: 200; */
+  font-size: 18px;
+}
+
+.header {
+  padding-left: 10px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.product-table th,
+.product-table td {
+  text-align: left;
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid rgb(133, 156, 226);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.product-table thead th {
+  background: #557dac;
+  font-size: 1.1rem;
+  position: sticky;
+  top: 0;
+}
+.product-table tbody tr:hover {
+  background: rgba(112, 149, 190, 0.877);
+}
+
+.price {
+  font-weight: 600;
+}
+
+.low-stock {
+  color: rgb(245, 103, 103);
+  font-weight: 700;
+}
+
+/* Highlight class applied by directive */
+.row-highlight {
+  background: linear-gradient(100deg, rgb(71, 143, 206), rgb(71, 143, 206));
+  transition: background-color 120ms ease-in-out;
+}
+
+/* Responsive (small screens) - make table horizontally scrollable */
+@media (max-width: 720px) {
+  .table-wrap {
+    padding: 0.1rem;
+  }
+  .product-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
