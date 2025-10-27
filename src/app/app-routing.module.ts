@@ -5,13 +5,29 @@ import { HomeComponent } from './Pages/components/home/home.component';
 import { VendorComponent } from './Pages/components/vendor/vendor.component';
 import { ContactComponent } from './Pages/components/contact/contact.component';
 import { ViewProductComponent } from './Pages/components/view-product/view-product.component';
+import { LoginComponent } from './Pages/components/login/login.component';
+import { LayoutComponent } from './layout/components/layout/layout.component';
+import { AddProductComponent } from './Pages/components/add-product/add-product.component';
+import { AddVendorComponent } from './Pages/components/add-vendor/add-vendor.component';
+import { MarketingCallsFormComponent } from './Pages/components/marketing-calls-form/marketing-calls-form.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'products', component: ProductsComponent },
-  { path: 'vendor', component: VendorComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'vendor', component: VendorComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'products/new', component: AddProductComponent },
+      { path: 'vendor/new', component: AddVendorComponent },
+      { path: 'marketing/new', component: MarketingCallsFormComponent },
+    ],
+  },
+
   // { path: 'products/view', component: ViewProductComponent },
   { path: '**', component: HomeComponent },
 ];

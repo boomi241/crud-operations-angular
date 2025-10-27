@@ -14,16 +14,25 @@
 .title {
   margin: 0 1 0.9rem 0;
   padding-top: 1rem;
+
   font-size: 1.5rem;
   text-align: center;
 }
 .form-product {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
   margin-bottom: 20px;
   margin-left: 10px;
 }
+
+.search-container {
+  display: flex;
+
+  gap: 10px;
+}
+
 .search-button {
   padding: 6px 12px;
   background-color: #557dac;

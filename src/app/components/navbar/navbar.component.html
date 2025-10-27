@@ -1,9 +1,25 @@
 <div class="navbar">
   <div class="navbar-brand">Cloute Technology</div>
   <ul class="nav-links">
-    <li [routerLink]="['/home']"><a>Home</a></li>
-    <li [routerLink]="['/products']"><a>Product</a></li>
-    <li [routerLink]="['/vendor']"><a>Vendor</a></li>
-    <li [routerLink]="['/contact']"><a>Contact</a></li>
+    <li>
+      <a [routerLink]="['/home']" routerLinkActive="active">Home</a>
+    </li>
+    <li>
+      <a [routerLink]="['/marketing/new']" routerLinkActive="active"
+        >Marketing Calls</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/products']" routerLinkActive="active">Product</a>
+    </li>
+    <li>
+      <a [routerLink]="['/vendor']" routerLinkActive="active">Vendor</a>
+    </li>
+    <li>
+      <a [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
+    </li>
+    <li>
+      <a [routerLink]="['/login']" routerLinkActive="active">Logout</a>
+    </li>
   </ul>
 </div>

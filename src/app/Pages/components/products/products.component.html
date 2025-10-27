@@ -1,11 +1,24 @@
 <div class="table-wrap">
   <h2 class="title">Product List</h2>
   <h2 class="header">Product List (Amount:0 - 40000)</h2>
+
   <div class="form-product">
-    <input type="text" id="search" class="search-field" #search />
-    <button type="button" class="search-button" (click)="searchproduct(search)">
-      Search
-    </button>
+    <div class="search-container">
+      <input type="text" id="search" class="search-field" #search />
+      <button
+        type="button"
+        class="search-button"
+        (click)="searchproduct(search)"
+      >
+        Search
+      </button>
+    </div>
+    <div class="search-container">
+      <!-- add product -->
+      <button type="button" class="search-button" routerLink="/products/new">
+        Add Product
+      </button>
+    </div>
   </div>
 
   <table class="product-table" role="table" aria-label="Product list">
@@ -23,14 +36,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of products">
-        <td>{{ p.id }}</td>
-        <td>{{ p.name }}</td>
+      <tr *ngFor="let p of products; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ p.productName }}</td>
         <td>{{ p.category }}</td>
         <td class="price">{{ formatINR(p.price) }}</td>
         <td [class.low-stock]="p.stock <= 10">{{ p.stock }}</td>
 
-        <td>{{ p.productcode }}</td>
+        <td>{{ p.productCode }}</td>
         <td>
           <span class="rating">{{ p.rating.toFixed(1) }}</span>
         </td>
