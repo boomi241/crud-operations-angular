@@ -16,6 +16,10 @@ import { RouterModule } from '@angular/router';
 import { AddVendorComponent } from './Pages/components/add-vendor/add-vendor.component';
 import { ViewVendorComponent } from './Pages/view-vendor/view-vendor.component';
 import { MarketingCallsFormComponent } from './Pages/components/marketing-calls-form/marketing-calls-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MarketingcallsListComponent } from './Pages/components/marketingcalls-list/marketingcalls-list.component';
+import { ViewMarkeingCallsComponent } from './Pages/components/view-markeing-calls/view-markeing-calls.component';
+import { ToastComponent } from './Pages/components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,9 @@ import { MarketingCallsFormComponent } from './Pages/components/marketing-calls-
     AddVendorComponent,
     ViewVendorComponent,
     MarketingCallsFormComponent,
+    MarketingcallsListComponent,
+    ViewMarkeingCallsComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,7 @@ import { MarketingCallsFormComponent } from './Pages/components/marketing-calls-
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

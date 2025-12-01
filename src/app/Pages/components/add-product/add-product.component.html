@@ -4,7 +4,7 @@
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="name">Product Name:</label>
         <input type="text" id="name" formControlName="productName" required />
       </div>
 
@@ -17,36 +17,12 @@
     <div class="form-row">
       <div class="form-group">
         <label for="price">Price:</label>
-        <input type="number" id="price" formControlName="price" required />
-      </div>
-
-      <div class="form-group">
-        <label for="stock">Stock:</label>
-        <input type="number" id="stock" formControlName="stock" required />
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="productCode">Product Code:</label>
         <input
-          type="text"
-          id="productCode"
-          formControlName="productCode"
+          type="number"
+          id="price"
+          formControlName="productPrice"
           required
         />
-      </div>
-
-      <div class="form-group">
-        <label for="rating">Rating:</label>
-        <input type="number" id="rating" formControlName="rating" required />
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="supplier">Supplier:</label>
-        <input type="text" id="supplier" formControlName="supplier" required />
       </div>
     </div>
 
@@ -57,3 +33,6 @@
     </div>
   </form>
 </div>
+<ng-container *ngIf="isToast">
+  <app-toast [message]="toastMessage" [show]="isToast"></app-toast>
+</ng-container>

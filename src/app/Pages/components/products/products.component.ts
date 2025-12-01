@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { filter } from 'rxjs';
+import { ApiService } from 'src/app/service/api.service';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
@@ -8,29 +9,36 @@ import { ProductService } from 'src/app/service/product.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  formatINR(value: number): string {
-    return '₹' + value.toLocaleString('en-In');
-  }
+  private apiService = inject(ApiService);
   viewProduct: boolean = false;
-  singleProduct: any;
+  productId: number = 0;
 
   products: any[] = [];
+
+  isToast = false;
+  toastMessage = '';
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getProduct();
+    this.fetchProductList();
+  }
+  fetchProductList() {
+    try {
+      this.apiService.fetchProductList().subscribe({
+        next: (val: any) => {
+          console.log(val);
+          this.products = val.data;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  // get filteredProducts() {
-  //   return this.products.filter(
-  //     (prod) =>
-  //       prod.price > 0 &&
-  //       prod.price <= 20000 &&
-  //       prod.stock > 0 &&
-  //       prod.stock <= 20
-  //   );
-  // }
   searchproduct(search: HTMLInputElement) {
     console.log(search.value);
     this.products = this.products.filter(
@@ -38,20 +46,39 @@ export class ProductsComponent implements OnInit {
     );
     console.log(this.products);
   }
-  deleteProduct(productId: number) {
-    this.products = this.products.filter((prd) => prd.id !== productId);
-    console.log(this.products);
+  deleteProduct(id: number) {
+    try {
+      this.apiService.deleteProduct(id).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          this.isToast = true;
+          this.toastMessage = 'Customer details deleted sucessfully';
+          setTimeout(() => {
+            this.isToast = false;
+          }, 2000);
+          this.fetchProductList();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () =>
+          console.log('Observable emitted the complete notfication'),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-  openViewProduct(product: any) {
-    console.log(product);
-    this.singleProduct = product;
+  openViewProduct(productId: number) {
+    console.log(productId);
+    this.productId = productId;
     this.viewProduct = true;
   }
 
   onCloseButton(updatedProduct: any) {
     this.viewProduct = false;
 
-    this.productService.updateProduct(updatedProduct);
-    this.products = this.productService.getProduct();
+    // this.productService.updateProduct(updatedProduct);
+    // this.products = this.productService.getProduct();
+    this.fetchProductList();
   }
 }

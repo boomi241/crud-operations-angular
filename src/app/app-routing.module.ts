@@ -10,6 +10,7 @@ import { LayoutComponent } from './layout/components/layout/layout.component';
 import { AddProductComponent } from './Pages/components/add-product/add-product.component';
 import { AddVendorComponent } from './Pages/components/add-vendor/add-vendor.component';
 import { MarketingCallsFormComponent } from './Pages/components/marketing-calls-form/marketing-calls-form.component';
+import { MarketingcallsListComponent } from './Pages/components/marketingcalls-list/marketingcalls-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'products/new', component: AddProductComponent },
       { path: 'vendor/new', component: AddVendorComponent },
       { path: 'marketing/new', component: MarketingCallsFormComponent },
+      { path: 'customer', component: MarketingcallsListComponent },
     ],
   },
 

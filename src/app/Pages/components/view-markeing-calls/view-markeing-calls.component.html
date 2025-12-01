@@ -1,0 +1,296 @@
+<div class="modal">
+  <div class="section">
+    <div class="header">
+      <h2>View Marketing Call List</h2>
+      <button class="close-modal" (click)="closeButton.emit(false)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="m12 13.4l-2.9 2.9q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7l2.9-2.9l-2.9-2.875q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l2.9 2.9l2.875-2.9q.275-.275.7-.275t.7.275q.3.3.3.713t-.3.687L13.375 12l2.9 2.9q.275.275.275.7t-.275.7q-.3.3-.712.3t-.688-.3z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="form-container">
+      <h3>Edit Marketing Call List</h3>
+      <form [formGroup]="updateMarketingCalls" (ngSubmit)="onsubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="customerName">Customer Name:</label>
+            <input
+              type="text"
+              id="customerName"
+              formControlName="customerName"
+              required
+              [ngClass]="{
+                'invalid-field':
+                  customerName?.invalid &&
+                  (customerName?.dirty || customerName?.touched)
+              }"
+            />
+            <div
+              *ngIf="
+                customerName?.invalid &&
+                (customerName?.dirty || customerName?.touched)
+              "
+            >
+              <div *ngIf="customerName?.hasError('required')">
+                <small class="error-text"> Customer Name is required! </small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="customerNo">Customer No</label>
+            <input
+              type="text"
+              maxlength="10"
+              formControlName="customerNo"
+              (keypress)="allowOnlyNumbers($event)"
+              placeholder="Enter 10-digit number"
+              [ngClass]="{
+                'invalid-field':
+                  customerNo?.invalid &&
+                  (customerNo?.dirty || customerNo?.touched)
+              }"
+            />
+            <div
+              *ngIf="
+                customerNo?.invalid &&
+                (customerNo?.dirty || customerNo?.touched)
+              "
+            >
+              <div *ngIf="customerNo?.hasError('required')">
+                <small class="error-text"> Customer Number is required! </small>
+              </div>
+              <div *ngIf="customerNo?.hasError('minlength')">
+                <small class="error-text">
+                  Customer No must be at least 10 characters!
+                </small>
+              </div>
+              <div *ngIf="customerNo?.hasError('maxlength')">
+                <small class="error-text">
+                  Customer No must be at least 10 characters!
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contactPersonName">Contact Person Name:</label>
+            <input
+              type="text"
+              id="contactPersonName"
+              formControlName="contactPersonName"
+              required
+              [ngClass]="{
+                'invalid-field':
+                  contactPersonName?.invalid &&
+                  (contactPersonName?.dirty || contactPersonName?.touched)
+              }"
+            />
+            <div
+              *ngIf="
+                contactPersonName?.invalid &&
+                (contactPersonName?.dirty || contactPersonName?.touched)
+              "
+            >
+              <div *ngIf="contactPersonName?.hasError('required')">
+                <small class="error-text"
+                  >Contact Person Name is required!</small
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactNo">Contact No:</label>
+            <input
+              type="text"
+              maxlength="10"
+              formControlName="contactNo"
+              (keypress)="allowOnlyNumbers($event)"
+              placeholder="Enter 10-digit number"
+              [ngClass]="{
+                'invalid-field':
+                  contactNo?.invalid && (contactNo?.dirty || contactNo?.touched)
+              }"
+            />
+            <div
+              *ngIf="
+                contactNo?.invalid && (contactNo?.dirty || contactNo?.touched)
+              "
+            >
+              <div *ngIf="contactNo?.hasError('required')">
+                <small class="error-text"> Contact Number is required!</small>
+              </div>
+              <div *ngIf="contactNo?.hasError('minlength')">
+                <small class="error-text">
+                  Contact No must be at least 10 characters!
+                </small>
+              </div>
+              <div *ngIf="contactNo?.hasError('maxlength')">
+                <small class="error-text">
+                  Contact No must be at least 10 characters!
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="customerAdd1">Customer Add1:</label>
+            <input
+              type="text"
+              id="customerAdd1"
+              formControlName="cutomerAdd1"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="emailId">Email:</label>
+            <input
+              type="email"
+              id="emailId"
+              formControlName="emailId"
+              required
+              [ngClass]="{
+                'invalid-field':
+                  emailId?.invalid && (emailId?.dirty || emailId?.touched)
+              }"
+            />
+            <div
+              *ngIf="emailId?.invalid && (emailId?.dirty || emailId?.touched)"
+            >
+              <div *ngIf="emailId?.hasError('required')">
+                <small class="error-text">EmailId is required!</small>
+              </div>
+              <div *ngIf="emailId?.hasError('email')">
+                <small class="error-text">Invalid Email Address!</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="customerAdd2">CustomerAdd2:</label>
+            <input
+              type="text"
+              id="customerAdd2"
+              formControlName="cutomerAdd2"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" formControlName="city" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" id="state" formControlName="state" />
+          </div>
+
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" id="country" formControlName="country" />
+          </div>
+        </div>
+
+        <!-- Product and Meeting Info -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pincode">Pincode:</label>
+            <input
+              type="text"
+              maxlength="6"
+              formControlName="pincode"
+              (keypress)="allowOnlyNumbers($event)"
+              placeholder="Enter 6-digit number"
+              [ngClass]="{
+                'invalid-field':
+                  pincode?.invalid && (pincode?.dirty || pincode?.touched)
+              }"
+            />
+            <div
+              *ngIf="pincode?.invalid && (pincode?.dirty || pincode?.touched)"
+            >
+              <div *ngIf="pincode?.hasError('required')">
+                <small class="error-text"> PinCode is required!</small>
+              </div>
+              <div *ngIf="pincode?.hasError('minlength')">
+                <small class="error-text">
+                  pinCode must be at least 6 characters!
+                </small>
+              </div>
+              <div *ngIf="pincode?.hasError('maxlength')">
+                <small class="error-text">
+                  PinCode must be at least 6 characters!
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="productInterested">Product Interested:</label>
+            <select id="productInterested" formControlName="productInterested">
+              <option value="" disabled selected>Select Product</option>
+              <option value="Mouse">Mouse</option>
+              <option value="Keyboard">Keyboard</option>
+              <option value="Monitor">Monitor</option>
+              <option value="Printer">Printer</option>
+              <option value="Laptop">Laptop</option>
+              <option value="Service">Service</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="meetingDate">Meeting Date:</label>
+            <input type="date" id="meetingDate" formControlName="meetingDate" />
+          </div>
+
+          <div class="form-group">
+            <label for="meetingTime">Meeting Time:</label>
+            <input type="time" id="meetingTime" formControlName="meetingTime" />
+          </div>
+        </div>
+
+        <!-- Call Type -->
+        <div class="form-group">
+          <label for="callType">Call Type:</label>
+          <div class="radio-group">
+            <label>
+              <input type="radio" formControlName="callType" [value]="true" />
+              Urgent
+            </label>
+            <label>
+              <input type="radio" formControlName="callType" [value]="false" />
+              Normal
+            </label>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="submit-btn" type="submit">
+            <strong>Update</strong>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-container *ngIf="isToast" class="toast-style">
+  <app-toast [message]="toastMessage" [show]="isToast"></app-toast>
+</ng-container>
